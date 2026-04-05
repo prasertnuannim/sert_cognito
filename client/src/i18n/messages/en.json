@@ -1,0 +1,261 @@
+{
+  "meta": {
+    "title": "Cognito Auth POC",
+    "description": "Proof of concept for authentication with Next.js, NextAuth, and Amazon Cognito."
+  },
+  "languageSwitcher": {
+    "label": "Language",
+    "en": "EN",
+    "th": "TH"
+  },
+  "common": {
+    "actions": {
+      "signIn": "Sign in",
+      "login": "Login",
+      "signOut": "Sign out",
+      "createAccount": "Create account",
+      "backToLogin": "Back to login",
+      "backToRegister": "Back to register",
+      "goToLogin": "Go to login",
+      "requestAnotherCode": "Request another code",
+      "sendResetCode": "Send reset code",
+      "resetPassword": "Reset password",
+      "confirmAccount": "Confirm account",
+      "loadUserAccess": "Load user access",
+      "saveRoles": "Save roles",
+      "jumpToRoleManagement": "Jump to role management",
+      "openLegacyAccessControlPage": "Open legacy access-control page",
+      "backToAccount": "Back to account",
+      "show": "Show",
+      "hide": "Hide"
+    },
+    "fields": {
+      "fullName": "Full name",
+      "email": "Email",
+      "accountEmail": "Account email",
+      "userEmail": "User email",
+      "password": "Password",
+      "newPassword": "New password",
+      "confirmationCode": "Confirmation code",
+      "resetCode": "Reset code",
+      "name": "Name",
+      "roles": "Roles",
+      "status": "Status",
+      "username": "Username"
+    },
+    "placeholders": {
+      "email": "you@example.com",
+      "userEmail": "user@example.com",
+      "fullName": "Jane Doe",
+      "password": "Enter your password",
+      "newPassword": "Create a new password",
+      "emailCode": "Enter the code from your email"
+    },
+    "labels": {
+      "optional": "optional",
+      "minimum8": "Minimum 8 characters.",
+      "orSeparator": "/"
+    },
+    "status": {
+      "loading": "Loading...",
+      "saving": "Saving...",
+      "sending": "Sending...",
+      "creating": "Creating...",
+      "confirming": "Confirming...",
+      "signingIn": "Signing in...",
+      "unknownUser": "Unknown user",
+      "noEmailInSession": "No email in session",
+      "unknown": "Unknown",
+      "noDisplayName": "No display name",
+      "noExplicitRole": "No explicit role found. Default authenticated access is applied."
+    }
+  },
+  "validation": {
+    "emailRequired": "Enter your email",
+    "emailInvalid": "Enter a valid email address",
+    "passwordRequired": "Enter your password",
+    "passwordMin": "Password must be at least 8 characters",
+    "newPasswordMin": "New password must be at least 8 characters",
+    "codeRequired": "Enter the confirmation code",
+    "nameTooLong": "Name is too long"
+  },
+  "errors": {
+    "invalidCredentials": "Invalid email or password",
+    "userNotConfirmed": "This account has not been confirmed yet",
+    "accountAlreadyExists": "This email is already in use",
+    "invalidPassword": "The password does not meet the policy requirements",
+    "signupDisabled": "Sign-up is currently disabled",
+    "codeMismatch": "The confirmation code is incorrect",
+    "expiredCode": "The confirmation code has expired",
+    "mfaRequired": "This account requires additional MFA verification",
+    "newPasswordRequired": "This account must set a new password before signing in",
+    "generic": "Something went wrong. Please try again.",
+    "validationError": "The submitted data is invalid",
+    "unauthorized": "Authentication required",
+    "forbidden": "Admin role required",
+    "userNotFound": "User not found in this Cognito user pool",
+    "loginUnavailable": "Unable to connect to the sign-in service",
+    "accessControlUnavailable": "Unable to connect to the access-control service"
+  },
+  "authShell": {
+    "flowGuideTitle": "Flow guide",
+    "flowGuideDescription": "Complete this step to continue the Cognito journey."
+  },
+  "login": {
+    "panelTag": "Project POC",
+    "panelTitle": "Next.js / NextAuth / Cognito Authentication",
+    "panelDescription": "This project is a proof of concept for authentication with Next.js, NextAuth, and Amazon Cognito.",
+    "scopeTitle": "POC scope",
+    "scopeDescription": "Cognito authentication flow with Next.js.",
+    "highlights": {
+      "registerAndConfirm": "Register and confirm account",
+      "credentialsSignIn": "Sign in with NextAuth credentials",
+      "protectedRoutes": "Protected route access control"
+    },
+    "badge": "Sign in",
+    "title": "Access your account",
+    "description": "This project is a POC for authentication using Next.js, NextAuth, and Amazon Cognito.",
+    "forgotPassword": "Forgot password?",
+    "footerPrompt": "Need a new account?"
+  },
+  "register": {
+    "badge": "Register",
+    "title": "Create your account",
+    "description": "Register a new Cognito account to start the auth flow.",
+    "panelTag": "Register flow",
+    "panelTitle": "Register in 3 steps.",
+    "panelDescription": "Fill the form, confirm the email, then sign in.",
+    "highlights": {
+      "step1Title": "1. Fill in the form",
+      "step1Description": "Name is optional. Email and password are required.",
+      "step2Title": "2. Create the account",
+      "step2Description": "Submit the form to create the Cognito user.",
+      "step3Title": "3. Confirm email",
+      "step3Description": "Use the code from email before the first login."
+    },
+    "footerPrompt": "Already have an account?"
+  },
+  "forgotPassword": {
+    "badge": "Recover access",
+    "title": "Request a reset code",
+    "description": "Enter the email attached to the account and the app will move you to the password reset step with that address prefilled.",
+    "panelTag": "Password recovery",
+    "panelTitle": "Recover the account without breaking the auth flow.",
+    "panelDescription": "This step requests a code from Cognito. The next screen uses that code to set a brand-new password.",
+    "highlights": {
+      "step1Title": "Use the registered email",
+      "step1Description": "The email must match an existing Cognito user in the current user pool.",
+      "step2Title": "Check inbox next",
+      "step2Description": "Cognito usually sends the verification code by email right after this request succeeds.",
+      "step3Title": "Fast handoff",
+      "step3Description": "The reset page receives the same email automatically through the query string."
+    },
+    "notesTitle": "What happens next",
+    "notes": {
+      "step1": "Submit the email to request a reset code from Cognito.",
+      "step2": "Use that code on the next screen to choose a new password."
+    }
+  },
+  "confirmAccount": {
+    "badge": "Confirm account",
+    "title": "Verify your email address",
+    "description": "Submit the confirmation code from your inbox to activate the account before the first login.",
+    "panelTag": "Account verification",
+    "panelTitle": "Unlock the account after registration.",
+    "panelDescription": "This step confirms the Cognito sign-up and completes the path from registration to the first authenticated session.",
+    "highlights": {
+      "step1Title": "Email prefill",
+      "step1Description": "If you came from sign-up, the account email can already be filled in for you.",
+      "step2Title": "Exact confirmation code",
+      "step2Description": "Use the latest code sent by email. Old codes may return mismatch or expired errors.",
+      "step3Title": "Ready to sign in",
+      "step3Description": "A successful confirmation redirects straight back to the login screen with the email preserved."
+    },
+    "notesTitle": "Confirmation notes",
+    "notes": {
+      "prefilled": "Confirmation is prepared for {email}.",
+      "checkInbox": "Check the inbox for the sign-up confirmation code from Cognito."
+    }
+  },
+  "resetPassword": {
+    "badge": "Reset password",
+    "title": "Choose a new password",
+    "description": "Enter the verification code from email and set the new password that will be used for the next sign-in.",
+    "panelTag": "Password update",
+    "panelTitle": "Finish the recovery flow with one final step.",
+    "panelDescription": "This screen confirms the reset code with Cognito, replaces the old password, and sends the user back to login.",
+    "highlights": {
+      "step1Title": "Code required",
+      "step1Description": "The reset code must be the latest code sent for this account.",
+      "step2Title": "New password policy",
+      "step2Description": "Use a password that matches the rules enforced by the user pool and the local validation.",
+      "step3Title": "Return to sign-in",
+      "step3Description": "On success, the flow routes back to login so the new credentials can be tested immediately."
+    },
+    "notesTitle": "Recovery status",
+    "notes": {
+      "prefilled": "Email is prefilled for {email}.",
+      "instruction": "Paste the code exactly as received, then choose a fresh password."
+    }
+  },
+  "account": {
+    "badge": "Account",
+    "title": "Account center and role control",
+    "description": "This is the landing page after a successful login. It shows account information, the current roles, and lets admins manage Cognito group roles from one place.",
+    "currentSession": "Current session",
+    "overview": {
+      "title": "Account overview",
+      "authenticatedLandingTitle": "Authenticated landing page",
+      "authenticatedLandingDescription": "Users who sign in successfully are sent to",
+      "managedRoleGroupsTitle": "Current managed role groups"
+    },
+    "accessBehavior": {
+      "title": "Access behavior",
+      "tokenRoleSourcesTitle": "Token role sources",
+      "tokenRoleSourcesDescription": "Roles are read from",
+      "protectedRoutesTitle": "Protected routes",
+      "requires": "requires",
+      "canManage": "This account can manage other users' roles through Cognito groups.",
+      "cannotManagePrefix": "This account can view account information but cannot change roles yet. It must belong to the",
+      "cannotManageSuffix": "group."
+    },
+    "roleManagement": {
+      "label": "Role management",
+      "title": "Change Cognito group roles"
+    }
+  },
+  "accessControl": {
+    "formTitle": "Manage user roles",
+    "assignableRoles": "Assignable roles",
+    "loadedProfile": "Loaded user profile",
+    "emptyState": "Load a user by email to inspect current Cognito groups and assign the managed roles for this application.",
+    "currentGroups": "Current Cognito groups",
+    "noGroups": "This user is not in any Cognito groups.",
+    "successMessage": "User roles updated successfully"
+  },
+  "settingsAccessControl": {
+    "badge": "Admin only",
+    "title": "Legacy access-control page",
+    "description": "This page still works for the older flow, but the new center for account details and role changes is the account page.",
+    "currentAdminSession": "Current admin session",
+    "permissionsGuide": {
+      "title": "How to change permissions",
+      "step1": "Set COGNITO_USER_POOL_ID and AWS credentials for the server before using the role-assignment page.",
+      "step2": "Change the post-login landing page from DEFAULT_AUTHENTICATED_PATH.",
+      "step3": "Set different home paths per role in ROLE_HOME_PATHS.",
+      "step4": "Define which roles can access each route in ROLE_ROUTE_RULES."
+    },
+    "roleHomePaths": {
+      "title": "Role home paths",
+      "empty": "No per-role home override. All authenticated users land on /account."
+    },
+    "protectedRoutes": {
+      "title": "Protected routes",
+      "allowedRoles": "Allowed roles: {roles}"
+    },
+    "managedRoleGroups": {
+      "title": "Managed Cognito role groups",
+      "description": "You can change this list with the COGNITO_ROLE_GROUPS environment variable, for example admin,manager,user,auditor."
+    }
+  }
+}

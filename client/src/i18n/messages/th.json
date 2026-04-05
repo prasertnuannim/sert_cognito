@@ -1,0 +1,261 @@
+{
+  "meta": {
+    "title": "POC ระบบยืนยันตัวตน Cognito",
+    "description": "โปรเจกต์ตัวอย่างสำหรับระบบยืนยันตัวตนด้วย Next.js, NextAuth และ Amazon Cognito"
+  },
+  "languageSwitcher": {
+    "label": "ภาษา",
+    "en": "EN",
+    "th": "TH"
+  },
+  "common": {
+    "actions": {
+      "signIn": "เข้าสู่ระบบ",
+      "login": "ล็อกอิน",
+      "signOut": "ออกจากระบบ",
+      "createAccount": "สร้างบัญชี",
+      "backToLogin": "กลับไปหน้าเข้าสู่ระบบ",
+      "backToRegister": "กลับไปหน้าสมัครสมาชิก",
+      "goToLogin": "ไปหน้าเข้าสู่ระบบ",
+      "requestAnotherCode": "ขอรหัสใหม่อีกครั้ง",
+      "sendResetCode": "ส่งรหัสรีเซ็ตรหัสผ่าน",
+      "resetPassword": "รีเซ็ตรหัสผ่าน",
+      "confirmAccount": "ยืนยันบัญชี",
+      "loadUserAccess": "โหลดสิทธิ์ผู้ใช้",
+      "saveRoles": "บันทึกสิทธิ์",
+      "jumpToRoleManagement": "ไปยังส่วนจัดการสิทธิ์",
+      "openLegacyAccessControlPage": "เปิดหน้า access-control เดิม",
+      "backToAccount": "กลับไปหน้า account",
+      "show": "แสดง",
+      "hide": "ซ่อน"
+    },
+    "fields": {
+      "fullName": "ชื่อเต็ม",
+      "email": "อีเมล",
+      "accountEmail": "อีเมลบัญชี",
+      "userEmail": "อีเมลผู้ใช้",
+      "password": "รหัสผ่าน",
+      "newPassword": "รหัสผ่านใหม่",
+      "confirmationCode": "รหัสยืนยัน",
+      "resetCode": "รหัสรีเซ็ต",
+      "name": "ชื่อ",
+      "roles": "สิทธิ์",
+      "status": "สถานะ",
+      "username": "ชื่อผู้ใช้"
+    },
+    "placeholders": {
+      "email": "you@example.com",
+      "userEmail": "user@example.com",
+      "fullName": "Jane Doe",
+      "password": "กรอกรหัสผ่าน",
+      "newPassword": "ตั้งรหัสผ่านใหม่",
+      "emailCode": "กรอกรหัสจากอีเมล"
+    },
+    "labels": {
+      "optional": "ไม่บังคับ",
+      "minimum8": "อย่างน้อย 8 ตัวอักษร",
+      "orSeparator": "/"
+    },
+    "status": {
+      "loading": "กำลังโหลด...",
+      "saving": "กำลังบันทึก...",
+      "sending": "กำลังส่ง...",
+      "creating": "กำลังสร้าง...",
+      "confirming": "กำลังยืนยัน...",
+      "signingIn": "กำลังเข้าสู่ระบบ...",
+      "unknownUser": "ไม่พบชื่อผู้ใช้",
+      "noEmailInSession": "ไม่มีอีเมลใน session",
+      "unknown": "ไม่ทราบ",
+      "noDisplayName": "ไม่มีชื่อที่แสดง",
+      "noExplicitRole": "ไม่พบบทบาทที่กำหนดไว้ชัดเจน ระบบจะใช้สิทธิ์เริ่มต้นของผู้ใช้ที่ล็อกอินแล้ว"
+    }
+  },
+  "validation": {
+    "emailRequired": "กรอกอีเมล",
+    "emailInvalid": "กรอกอีเมลให้ถูกต้อง",
+    "passwordRequired": "กรอกรหัสผ่าน",
+    "passwordMin": "รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร",
+    "newPasswordMin": "รหัสผ่านใหม่ต้องมีอย่างน้อย 8 ตัวอักษร",
+    "codeRequired": "กรอกรหัสยืนยัน",
+    "nameTooLong": "ชื่อยาวเกินไป"
+  },
+  "errors": {
+    "invalidCredentials": "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
+    "userNotConfirmed": "บัญชียังไม่ได้ยืนยันอีเมล",
+    "accountAlreadyExists": "อีเมลนี้ถูกใช้งานแล้ว",
+    "invalidPassword": "รหัสผ่านไม่ผ่านนโยบายของระบบ",
+    "signupDisabled": "ยังไม่เปิดให้สมัครสมาชิก",
+    "codeMismatch": "รหัสยืนยันไม่ถูกต้อง",
+    "expiredCode": "รหัสยืนยันหมดอายุแล้ว",
+    "mfaRequired": "บัญชีนี้ต้องยืนยันตัวตนแบบ MFA เพิ่มเติม",
+    "newPasswordRequired": "บัญชีนี้ต้องตั้งรหัสผ่านใหม่ก่อนเข้าใช้งาน",
+    "generic": "เกิดข้อผิดพลาด กรุณาลองใหม่",
+    "validationError": "ข้อมูลที่ส่งมาไม่ถูกต้อง",
+    "unauthorized": "กรุณาเข้าสู่ระบบก่อน",
+    "forbidden": "ต้องใช้สิทธิ์ผู้ดูแลระบบ",
+    "userNotFound": "ไม่พบบัญชีผู้ใช้นี้ใน Cognito user pool",
+    "loginUnavailable": "ไม่สามารถเชื่อมต่อระบบเข้าสู่ระบบได้",
+    "accessControlUnavailable": "ไม่สามารถเชื่อมต่อบริการจัดการสิทธิ์ได้"
+  },
+  "authShell": {
+    "flowGuideTitle": "ลำดับขั้นตอน",
+    "flowGuideDescription": "ทำขั้นตอนนี้ให้เสร็จเพื่อไปต่อใน flow ของ Cognito"
+  },
+  "login": {
+    "panelTag": "Project POC",
+    "panelTitle": "การยืนยันตัวตนด้วย Next.js / NextAuth / Cognito",
+    "panelDescription": "โปรเจกต์นี้เป็น proof of concept สำหรับระบบยืนยันตัวตนด้วย Next.js, NextAuth และ Amazon Cognito",
+    "scopeTitle": "ขอบเขต POC",
+    "scopeDescription": "flow การยืนยันตัวตนด้วย Cognito บน Next.js",
+    "highlights": {
+      "registerAndConfirm": "สมัครสมาชิกและยืนยันบัญชี",
+      "credentialsSignIn": "เข้าสู่ระบบด้วย NextAuth credentials",
+      "protectedRoutes": "ควบคุมการเข้าถึง protected routes"
+    },
+    "badge": "เข้าสู่ระบบ",
+    "title": "เข้าสู่บัญชีของคุณ",
+    "description": "โปรเจกต์นี้เป็น POC สำหรับระบบยืนยันตัวตนด้วย Next.js, NextAuth และ Amazon Cognito",
+    "forgotPassword": "ลืมรหัสผ่าน?",
+    "footerPrompt": "ต้องการบัญชีใหม่?"
+  },
+  "register": {
+    "badge": "สมัครสมาชิก",
+    "title": "สร้างบัญชีของคุณ",
+    "description": "สมัครบัญชี Cognito ใหม่เพื่อเริ่มต้น auth flow",
+    "panelTag": "Register flow",
+    "panelTitle": "สมัครสมาชิก 3 ขั้นตอน",
+    "panelDescription": "กรอกฟอร์ม, ยืนยันอีเมล แล้วจึงเข้าสู่ระบบ",
+    "highlights": {
+      "step1Title": "1. กรอกข้อมูล",
+      "step1Description": "ชื่อไม่บังคับ แต่ต้องกรอกอีเมลและรหัสผ่าน",
+      "step2Title": "2. สร้างบัญชี",
+      "step2Description": "ส่งฟอร์มเพื่อสร้างผู้ใช้ใน Cognito",
+      "step3Title": "3. ยืนยันอีเมล",
+      "step3Description": "ใช้รหัสจากอีเมลก่อนเข้าสู่ระบบครั้งแรก"
+    },
+    "footerPrompt": "มีบัญชีอยู่แล้ว?"
+  },
+  "forgotPassword": {
+    "badge": "กู้คืนการเข้าใช้งาน",
+    "title": "ขอรหัสรีเซ็ตรหัสผ่าน",
+    "description": "กรอกอีเมลของบัญชี แล้วระบบจะพาไปขั้นตอนตั้งรหัสผ่านใหม่พร้อมเติมอีเมลให้",
+    "panelTag": "กู้คืนรหัสผ่าน",
+    "panelTitle": "กู้คืนบัญชีโดยไม่หลุดจาก auth flow",
+    "panelDescription": "ขั้นตอนนี้จะขอรหัสจาก Cognito และหน้าถัดไปจะใช้รหัสดังกล่าวเพื่อตั้งรหัสผ่านใหม่",
+    "highlights": {
+      "step1Title": "ใช้อีเมลที่ลงทะเบียนไว้",
+      "step1Description": "อีเมลต้องตรงกับผู้ใช้ที่มีอยู่ใน Cognito user pool ปัจจุบัน",
+      "step2Title": "ตรวจอีเมลต่อ",
+      "step2Description": "โดยปกติ Cognito จะส่งรหัสยืนยันทางอีเมลทันทีหลังคำขอสำเร็จ",
+      "step3Title": "ส่งต่ออัตโนมัติ",
+      "step3Description": "หน้ารีเซ็ตรหัสผ่านจะได้รับอีเมลเดียวกันผ่าน query string อัตโนมัติ"
+    },
+    "notesTitle": "ขั้นตอนถัดไป",
+    "notes": {
+      "step1": "ส่งอีเมลเพื่อขอรหัสรีเซ็ตรหัสผ่านจาก Cognito",
+      "step2": "ใช้รหัสดังกล่าวในหน้าถัดไปเพื่อตั้งรหัสผ่านใหม่"
+    }
+  },
+  "confirmAccount": {
+    "badge": "ยืนยันบัญชี",
+    "title": "ยืนยันอีเมลของคุณ",
+    "description": "กรอกรหัสยืนยันจากอีเมลเพื่อเปิดใช้งานบัญชีก่อนเข้าสู่ระบบครั้งแรก",
+    "panelTag": "ยืนยันบัญชี",
+    "panelTitle": "ปลดล็อกบัญชีหลังสมัครสมาชิก",
+    "panelDescription": "ขั้นตอนนี้จะยืนยันการสมัครผ่าน Cognito และทำให้ flow จากสมัครสมาชิกไปสู่ session แรกสมบูรณ์",
+    "highlights": {
+      "step1Title": "เติมอีเมลอัตโนมัติ",
+      "step1Description": "ถ้ามาจากหน้าสมัครสมาชิก ระบบอาจกรอกอีเมลบัญชีไว้ให้แล้ว",
+      "step2Title": "ใช้รหัสล่าสุด",
+      "step2Description": "ใช้รหัสล่าสุดที่ส่งทางอีเมล รหัสเก่าอาจขึ้นว่าไม่ตรงหรือหมดอายุ",
+      "step3Title": "พร้อมเข้าสู่ระบบ",
+      "step3Description": "เมื่อยืนยันสำเร็จ ระบบจะพากลับหน้าเข้าสู่ระบบพร้อมคงอีเมลไว้"
+    },
+    "notesTitle": "หมายเหตุการยืนยัน",
+    "notes": {
+      "prefilled": "ระบบเตรียมการยืนยันไว้สำหรับ {email}",
+      "checkInbox": "ตรวจกล่องอีเมลเพื่อหารหัสยืนยันการสมัครจาก Cognito"
+    }
+  },
+  "resetPassword": {
+    "badge": "รีเซ็ตรหัสผ่าน",
+    "title": "ตั้งรหัสผ่านใหม่",
+    "description": "กรอกรหัสยืนยันจากอีเมลและตั้งรหัสผ่านใหม่ที่จะใช้ในการเข้าสู่ระบบครั้งถัดไป",
+    "panelTag": "อัปเดตรหัสผ่าน",
+    "panelTitle": "จบ flow การกู้คืนด้วยขั้นตอนสุดท้าย",
+    "panelDescription": "หน้านี้จะยืนยันรหัสรีเซ็ตกับ Cognito เปลี่ยนรหัสผ่านเดิม และพากลับไปหน้าเข้าสู่ระบบ",
+    "highlights": {
+      "step1Title": "ต้องใช้รหัส",
+      "step1Description": "รหัสรีเซ็ตต้องเป็นรหัสล่าสุดที่ส่งให้บัญชีนี้",
+      "step2Title": "นโยบายรหัสผ่านใหม่",
+      "step2Description": "ใช้รหัสผ่านที่ตรงกับกฎของ user pool และ validation ในระบบ",
+      "step3Title": "กลับไปเข้าสู่ระบบ",
+      "step3Description": "เมื่อสำเร็จ ระบบจะพากลับหน้าเข้าสู่ระบบเพื่อทดสอบรหัสใหม่ได้ทันที"
+    },
+    "notesTitle": "สถานะการกู้คืน",
+    "notes": {
+      "prefilled": "ระบบกรอกอีเมลไว้ให้สำหรับ {email}",
+      "instruction": "วางรหัสให้ตรงตามที่ได้รับ แล้วตั้งรหัสผ่านใหม่"
+    }
+  },
+  "account": {
+    "badge": "Account",
+    "title": "ศูนย์รวมบัญชีและการจัดการสิทธิ์",
+    "description": "หน้านี้เป็น landing page หลัง login สำเร็จ ใช้ดูข้อมูลบัญชี, role ปัจจุบัน, และสำหรับ admin ใช้เปลี่ยน role ของผู้ใช้ใน Cognito Groups ได้จากหน้าเดียว",
+    "currentSession": "Session ปัจจุบัน",
+    "overview": {
+      "title": "ภาพรวมบัญชี",
+      "authenticatedLandingTitle": "หน้า landing หลังเข้าสู่ระบบ",
+      "authenticatedLandingDescription": "ผู้ใช้ที่ login สำเร็จจะถูกส่งมาที่",
+      "managedRoleGroupsTitle": "กลุ่ม role ที่ระบบจัดการอยู่"
+    },
+    "accessBehavior": {
+      "title": "พฤติกรรมการเข้าถึง",
+      "tokenRoleSourcesTitle": "แหล่งที่มาของ role ใน token",
+      "tokenRoleSourcesDescription": "role ถูกอ่านจาก",
+      "protectedRoutesTitle": "เส้นทางที่ถูกป้องกัน",
+      "requires": "ต้องใช้ role",
+      "canManage": "บัญชีนี้มีสิทธิ์จัดการ role ของผู้ใช้คนอื่นผ่าน Cognito Groups ได้",
+      "cannotManagePrefix": "บัญชีนี้ดูข้อมูล account ได้ แต่ยังไม่มีสิทธิ์แก้ role. ต้องอยู่ใน group",
+      "cannotManageSuffix": ""
+    },
+    "roleManagement": {
+      "label": "การจัดการสิทธิ์",
+      "title": "เปลี่ยน role ใน Cognito group"
+    }
+  },
+  "accessControl": {
+    "formTitle": "จัดการ role ของผู้ใช้",
+    "assignableRoles": "role ที่กำหนดได้",
+    "loadedProfile": "ข้อมูลผู้ใช้ที่โหลดมา",
+    "emptyState": "โหลดผู้ใช้ด้วยอีเมลเพื่อดู Cognito groups ปัจจุบันและกำหนด role ที่ระบบรองรับสำหรับแอปนี้",
+    "currentGroups": "Cognito groups ปัจจุบัน",
+    "noGroups": "ผู้ใช้นี้ยังไม่ได้อยู่ใน Cognito group ใด",
+    "successMessage": "อัปเดต role ของผู้ใช้สำเร็จ"
+  },
+  "settingsAccessControl": {
+    "badge": "Admin only",
+    "title": "หน้า access-control แบบเดิม",
+    "description": "หน้านี้ยังใช้งานได้สำหรับของเดิม แต่ศูนย์กลางใหม่ของข้อมูล account และการเปลี่ยน role อยู่ที่หน้า account",
+    "currentAdminSession": "Session ของผู้ดูแลระบบปัจจุบัน",
+    "permissionsGuide": {
+      "title": "วิธีเปลี่ยนสิทธิ์",
+      "step1": "ตั้งค่า COGNITO_USER_POOL_ID และ AWS credentials สำหรับ server ก่อนใช้หน้า assign role",
+      "step2": "เปลี่ยน landing page หลัง login จาก DEFAULT_AUTHENTICATED_PATH",
+      "step3": "กำหนด home แยกตาม role ได้ใน ROLE_HOME_PATHS",
+      "step4": "กำหนดว่า route ไหนต้องใช้ role อะไรใน ROLE_ROUTE_RULES"
+    },
+    "roleHomePaths": {
+      "title": "เส้นทางหน้าแรกตาม role",
+      "empty": "ยังไม่มีการ override หน้าแรกตาม role ผู้ใช้ที่ล็อกอินแล้วทั้งหมดจะไปที่ /account"
+    },
+    "protectedRoutes": {
+      "title": "เส้นทางที่ถูกป้องกัน",
+      "allowedRoles": "role ที่อนุญาต: {roles}"
+    },
+    "managedRoleGroups": {
+      "title": "Cognito role groups ที่ระบบจัดการ",
+      "description": "เปลี่ยนรายการนี้ได้จาก env COGNITO_ROLE_GROUPS เช่น admin,manager,user,auditor"
+    }
+  }
+}
